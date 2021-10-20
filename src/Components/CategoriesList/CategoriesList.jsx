@@ -1,12 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {fetchCategories} from "../../store/Slices/categoriesFetchSlice";
 import {Preloader} from "../Preloader/Preloader";
 
 export function CategoriesList(props) {
     const items = useSelector((state) => state.categoriesFetch);
     const dispatch = useDispatch();
-    // const [activeCategory, setActiveCategory] = useState(0);
 
     useEffect(() => {
         dispatch(fetchCategories({dispatch}));
