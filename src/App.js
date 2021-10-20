@@ -1,25 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import {MainPage} from "./Components/MainPage/MainPage";
+import {Footer} from "./Components/Footer/Footer";
+import {Header} from "./Components/Header/Header";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import {CatalogPage} from "./Components/CatalogPage/CatalogPage";
+import {AboutPage} from "./Components/AboutPage/AboutPage";
+import {ContactsPage} from "./Components/ContactsPage/ContactsPage";
+import {store} from "./store";
+import {Provider} from "react-redux";
+import {CartPage} from "./Components/CartPage/CartPage";
+import {ProductPage} from "./Components/ProductPage/ProductPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <div className={'App'}>
+                <Router>
+                    <Header/>
+                    <Switch>
+                        <Route path="/cart">
+                            <CartPage/>
+                        </Route>
+                        <Route path="/about">
+                            <AboutPage/>
+                        </Route>
+                        <Route path="/contacts">
+                            <ContactsPage/>
+                        </Route>
+                        <Route path="/catalog/:id">
+                            <ProductPage/>
+                        </Route>
+                        <Route path="/catalog">
+                            <CatalogPage/>
+                        </Route>
+                        <Route path="/">
+                            <MainPage/>
+                        </Route>
+                    </Switch>
+                    <Footer/>
+                </Router>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
