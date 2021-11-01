@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import {fetchProduct} from "../../store/Slices/productFetchSlice";
 import {Preloader} from "../Preloader/Preloader";
 
-export function ProductPage(props) {
+export function ProductPage() {
     const {id} = useParams();
     const dispatch = useDispatch();
     const item = useSelector((state) => state.productFetch);
