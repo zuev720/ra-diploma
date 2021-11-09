@@ -1,7 +1,6 @@
 .row-footer {
     display: flex;
     justify-content: center;
-    padding: 0 25px;
 }
 
 .col-footer {
@@ -23,7 +22,6 @@
 .nav-item {
     list-style: none;
     margin-left: 10px;
-    /*margin-top: 1.5em;*/
 }
 
 .footer-pay {

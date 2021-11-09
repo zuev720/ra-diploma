@@ -6,6 +6,7 @@ import {setValueCatalogSearchForm} from "../../store/Slices/valueCatalogSearchFo
 import {setValueSearchForm} from "../../store/Slices/valueSearchFormSlice";
 import {setInitialStateProducts} from "../../store/Slices/productsFetchSlice";
 import {setCurrentUrl} from "../../store/Slices/currentUrlSlice";
+import {setCurrentCategory} from "../../store/Slices/activeCategorySlice";
 
 export function SearchButton(props) {
     const dispatch = useDispatch();
@@ -14,8 +15,8 @@ export function SearchButton(props) {
     const history = useHistory();
     const onSearchButtonClick = () => {
         if (formStatus && inputSearchValue !== '') {
+            dispatch(setCurrentCategory(0));
             if (history.location.pathname === '/catalog') {
-                dispatch(setInitialStateProducts());
                 dispatch(setValueSearchForm(''));
                 dispatch(setValueCatalogSearchForm(inputSearchValue));
             } else {
@@ -23,6 +24,7 @@ export function SearchButton(props) {
                 dispatch(setValueSearchForm(''));
                 history.push('/catalog');
             }
+            dispatch(setInitialStateProducts());
             dispatch(setCurrentUrl(`${process.env.REACT_APP_API_URL}/items?q=${inputSearchValue}`));
         }
         dispatch(activateSearchForm((!formStatus)));

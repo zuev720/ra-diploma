@@ -7,16 +7,22 @@ import activateSearchFormReducer from "./Slices/activateSearchFormSlice";
 import valueSearchFormReducer from "./Slices/valueSearchFormSlice";
 import valueCatalogSearchFormReducer from "./Slices/valueCatalogSearchFormSlice";
 import currentUrlReducer from "./Slices/currentUrlSlice";
+import getOrdersReducer from "./Slices/getOrdersSlice";
+import requestOrdersReducer from "./Slices/orderRequestSlice";
+import activeCategoryReducer from "./Slices/activeCategorySlice";
 
 const rootReducer = combineReducers({
     topSalesFetch: topSalesFetchReducer,
     productsFetch: productsFetchReducer,
     productFetch: productFetchReducer,
     categoriesFetch: categoriesFetchReducer,
+    activeCategory: activeCategoryReducer,
     activateSearchForm: activateSearchFormReducer,
     valueSearchForm: valueSearchFormReducer,
     valueCatalogSearchForm: valueCatalogSearchFormReducer,
     currentUrl: currentUrlReducer,
+    getOrders: getOrdersReducer,
+    requestOrders: requestOrdersReducer,
 });
 
 export const store = configureStore({

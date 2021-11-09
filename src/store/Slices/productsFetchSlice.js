@@ -1,10 +1,12 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {checkUrl} from "../../Functions/checkUrl";
 
 export const fetchProducts = createAsyncThunk(
     'fetch/productsFetch',
     async (props) => {
         const typeRequest = checkUrl(props.currentUrl);
         const dispatch = props.dispatch;
+        if (typeRequest === 'categoryProductsOffsetRequest' || typeRequest === 'allProductsOffsetRequest') dispatch(activateAdditionalLoading());
         const activeCategory = props.activeCategory;
         dispatch(fetchProductsRequest());
         try {
@@ -24,7 +26,7 @@ export const fetchProducts = createAsyncThunk(
     });
 
 const initialState = {
-    items: [], currentCategory: 0, canAddProducts: true, loading: false, error: null,
+    items: [], currentCategory: 0, additionalLoading: false, canAddProducts: true, loading: false, error: null,
 };
 
 export const productsFetchReducer = createSlice({
@@ -47,6 +49,10 @@ export const productsFetchReducer = createSlice({
             if (action.payload.typeRequest === 'productsSearchRequest') state.items = action.payload.data;
             state.currentCategory = action.payload.activeCategory;
             state.loading = false;
+            state.additionalLoading = false;
+        },
+        activateAdditionalLoading(state) {
+          state.additionalLoading = true;
         },
         setInitialStateProducts(state) {
             state.items = [];
@@ -54,14 +60,6 @@ export const productsFetchReducer = createSlice({
     },
 });
 
-export const {fetchProductsRequest, fetchProductsFailure, fetchProductsSuccess, setInitialStateProducts} = productsFetchReducer.actions;
+export const {fetchProductsRequest, fetchProductsFailure, fetchProductsSuccess, activateAdditionalLoading, setInitialStateProducts} = productsFetchReducer.actions;
 
 export default productsFetchReducer.reducer;
-
-function checkUrl(url) {
-    if (url.indexOf('items?categoryId=') !== -1 && url.indexOf('&offset=') !== -1) return 'categoryProductsOffsetRequest';
-    if (url.indexOf(`${process.env.REACT_APP_API_URL}/items?q=`) !== -1) return 'productsSearchRequest';
-    if (url.indexOf(`${process.env.REACT_APP_API_URL}/items?categoryId=`) !== -1) return 'categoryRequest';
-    if (url.indexOf(`${process.env.REACT_APP_API_URL}/items?offset=`) !== -1) return 'allProductsOffsetRequest';
-    if (url.indexOf(`${process.env.REACT_APP_API_URL}/items`) !== -1) return 'allProductsRequest';
-}

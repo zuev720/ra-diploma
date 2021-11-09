@@ -2,7 +2,7 @@ import React from "react";
 
 export function AboutPage () {
     return(
-        <section className="top-sales">
+        <section className="top-sales container">
             <h2 className="text-center">О магазине</h2>
             <p>
                 В Интернете можно встретить немало магазинов, предлагающих аксессуары. Но именно к нам хочется

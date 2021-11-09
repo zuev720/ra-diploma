@@ -7,7 +7,6 @@ export function ProductItem (props) {
         <div className="col-4 mt-3">
             <div className={props.class}>
                 <Image images={props.images} title={props.title}/>
-                {/*<img src={props.images[0]} className={'card-img-top'} alt={props.title}/>*/}
                 <div className={'cardBody'}>
                     <p className="card-text">{props.title}</p>
                     <p className="card-text">{props.price} ₽</p>

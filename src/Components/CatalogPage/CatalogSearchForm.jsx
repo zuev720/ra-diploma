@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentUrl} from "../../store/Slices/currentUrlSlice";
+import {setInitialStateProducts} from "../../store/Slices/productsFetchSlice";
+import {setValueCatalogSearchForm} from "../../store/Slices/valueCatalogSearchFormSlice";
 
 export function CatalogSearchForm() {
     const dispatch = useDispatch();
@@ -17,6 +19,8 @@ export function CatalogSearchForm() {
 
     const onSearchFormSubmit = (e) => {
         e.preventDefault();
+        dispatch(setInitialStateProducts());
+        dispatch(setValueCatalogSearchForm(state));
         dispatch(setCurrentUrl(`${process.env.REACT_APP_API_URL}/items?q=${state}`));
     };
 

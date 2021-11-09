@@ -17,7 +17,7 @@ export function TopSales() {
             <h2 className="text-center">Хиты продаж!</h2>
             <div className="row">
                 {topSales.loading && <Preloader/>}
-                {topSales.items && topSales.items.map((item) => <ProductItem
+                {!topSales.loading && topSales.items && topSales.items.map((item) => <ProductItem
                     key={item.id}
                     class={'card'}
                     {...item}/>)}
