@@ -1,4 +1,4 @@
-﻿(GitHub-pages)[https://zuev720.github.io/ra-diploma/]
+﻿[GitHub-pages](https://zuev720.github.io/ra-diploma/)
  
  
  # Дипломный проект курса «React»
