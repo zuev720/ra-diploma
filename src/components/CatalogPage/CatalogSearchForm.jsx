@@ -1,13 +1,12 @@
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {setCurrentUrl} from "../../store/Slices/currentUrlSlice";
-import {setInitialStateProducts} from "../../store/Slices/productsFetchSlice";
-import {setValueCatalogSearchForm} from "../../store/Slices/valueCatalogSearchFormSlice";
+import {useSelector} from "react-redux";
+import {useHistory, useLocation} from "react-router-dom";
 
 export function CatalogSearchForm() {
-    const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
     const catalogSearchValue = useSelector((state) => state.valueCatalogSearchForm);
-    const [state, setState] = useState('');
+    const [state, setState] = useState((catalogSearchValue) ? catalogSearchValue : '');
 
     useEffect(() => {
         setState(catalogSearchValue);
@@ -19,9 +18,10 @@ export function CatalogSearchForm() {
 
     const onSearchFormSubmit = (e) => {
         e.preventDefault();
-        dispatch(setInitialStateProducts());
-        dispatch(setValueCatalogSearchForm(state));
-        dispatch(setCurrentUrl(`${process.env.REACT_APP_API_URL}/items?q=${state}`));
+        history.push({
+            pathname: location.pathname,
+            search: `?q=${state}`,
+        });
     };
 
     return(

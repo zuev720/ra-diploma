@@ -1,11 +1,12 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setValueSearchForm} from "../../store/Slices/valueSearchFormSlice";
+import {setValueSearchForm} from "../../store/slices/valueSearchFormSlice";
 
-export function SearchForm() {
-    const formStatus = useSelector((state) => state.activateSearchForm);
+export function SearchForm(props) {
+    const formStatus = props.formStatus;
     const inputValue = useSelector((state) => state.valueSearchForm);
     const dispatch = useDispatch();
+
     const onInputChange = (e) => {
         dispatch(setValueSearchForm(e.target.value));
     }

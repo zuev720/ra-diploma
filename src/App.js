@@ -1,19 +1,19 @@
 import './App.css';
-import {MainPage} from "./Components/MainPage/MainPage";
-import {Footer} from "./Components/Footer/Footer";
-import {Header} from "./Components/Header/Header";
+import {MainPage} from "./components/MainPage/MainPage";
+import {Footer} from "./components/Footer/Footer";
+import {Header} from "./components/Header/Header";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
-import {CatalogPage} from "./Components/CatalogPage/CatalogPage";
-import {AboutPage} from "./Components/AboutPage/AboutPage";
-import {ContactsPage} from "./Components/ContactsPage/ContactsPage";
+import {CatalogPage} from "./components/CatalogPage/CatalogPage";
+import {AboutPage} from "./components/AboutPage/AboutPage";
+import {ContactsPage} from "./components/ContactsPage/ContactsPage";
 import {store} from "./store";
 import {Provider} from "react-redux";
-import {CartPage} from "./Components/CartPage/CartPage";
-import {ProductPage} from "./Components/ProductPage/ProductPage";
+import {CartPage} from "./components/CartPage/CartPage";
+import {ProductPage} from "./components/ProductPage/ProductPage";
 
 function App() {
     return (

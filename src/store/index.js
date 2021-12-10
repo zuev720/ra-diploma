@@ -1,28 +1,22 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import topSalesFetchReducer from "./Slices/topSalesFetchSlice";
-import productsFetchReducer from "./Slices/productsFetchSlice";
-import productFetchReducer from "./Slices/productFetchSlice";
-import categoriesFetchReducer from "./Slices/categoriesFetchSlice";
-import activateSearchFormReducer from "./Slices/activateSearchFormSlice";
-import valueSearchFormReducer from "./Slices/valueSearchFormSlice";
-import valueCatalogSearchFormReducer from "./Slices/valueCatalogSearchFormSlice";
-import currentUrlReducer from "./Slices/currentUrlSlice";
-import getOrdersReducer from "./Slices/getOrdersSlice";
-import requestOrdersReducer from "./Slices/orderRequestSlice";
-import activeCategoryReducer from "./Slices/activeCategorySlice";
+import topSalesFetchReducer from "./slices/topSalesFetchSlice";
+import productsFetchReducer from "./slices/productsFetchSlice";
+import productFetchReducer from "./slices/productFetchSlice";
+import categoriesFetchReducer from "./slices/categoriesFetchSlice";
+import valueSearchFormReducer from "./slices/valueSearchFormSlice";
+import valueCatalogSearchFormReducer from "./slices/valueCatalogSearchFormSlice";
+import requestOrdersReducer from "./slices/orderRequestSlice";
+import cartReducer from "./slices/cartSlice";
 
 const rootReducer = combineReducers({
     topSalesFetch: topSalesFetchReducer,
     productsFetch: productsFetchReducer,
     productFetch: productFetchReducer,
     categoriesFetch: categoriesFetchReducer,
-    activeCategory: activeCategoryReducer,
-    activateSearchForm: activateSearchFormReducer,
     valueSearchForm: valueSearchFormReducer,
     valueCatalogSearchForm: valueCatalogSearchFormReducer,
-    currentUrl: currentUrlReducer,
-    getOrders: getOrdersReducer,
     requestOrders: requestOrdersReducer,
+    getOrders: cartReducer,
 });
 
 export const store = configureStore({

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {requestOrder} from "../../store/Slices/orderRequestSlice";
+import {requestOrder} from "../../store/slices/orderRequestSlice";
 import {Preloader} from "../Preloader/Preloader";
-import {setOrders} from "../../store/Slices/getOrdersSlice";
 import {useHistory} from "react-router-dom";
+import {updateCart} from "../../store/slices/cartSlice";
 
 export function Order(props) {
     const stateOrderRequest = useSelector((state) => state.requestOrders);
@@ -19,7 +19,7 @@ export function Order(props) {
     useEffect(() => {
         if (stateOrderRequest.success) {
             localStorage.removeItem('orders');
-            dispatch(setOrders([]));
+            dispatch(updateCart());
             history.push('/');
         }
     }, [dispatch, history, stateOrderRequest.success]);

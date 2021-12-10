@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, NavLink} from "react-router-dom";
 import {SearchForm} from "./SearchForm";
 import {SearchButton} from "./SearchButton";
 import {HeaderCartIcon} from "./HeaderCartIcon";
 
 export function Header() {
+    const [formStatus, setFormStatus] = useState(false);
 
     return (
         <header className="container">
@@ -12,10 +13,10 @@ export function Header() {
                 <div className="col">
                     <nav className="navbar navbar-expand-sm navbar-light bg-light">
                         <Link className="navbar-brand" to={'/'}>
-                            <img src={'./header-logo.png'} alt="Bosa Noga" />
+                            <img src={'/header-logo.png'} alt="Bosa Noga" />
                         </Link>
 
-                        <div className="collapase navbar-collapse" id="navbarMain">
+                        <div className="collapase navbar-collapse justify-content-between" id="navbarMain">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item active flex-direction-column justify-content-center">
                                     <NavLink exact={true} activeClassName={'active'} className="nav-link" to={'/'}>Главная</NavLink>
@@ -30,9 +31,9 @@ export function Header() {
                                     <NavLink activeClassName={'active'} className="nav-link" to={'/contacts'}>Контакты</NavLink>
                                 </li>
                             </ul>
-                            <SearchForm />
                             <div className="header-controls-pics">
-                                <SearchButton />
+                                <SearchForm formStatus={formStatus} />
+                                <SearchButton formStatus={formStatus} setFormActive={setFormStatus} />
                                 <HeaderCartIcon />
                             </div>
                         </div>

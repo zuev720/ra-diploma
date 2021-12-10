@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import {TopSales} from "./TopSales";
 import {Catalog} from "./Catalog";
 import {useDispatch} from "react-redux";
-import {setInitialOrder} from "../../store/Slices/orderRequestSlice";
-import {useStatusOrder} from "../../Hooks/useStatusOrder";
+import {setInitialOrder} from "../../store/slices/orderRequestSlice";
+import {useStatusOrder} from "../../hooks/useStatusOrder";
 
 export function MainPage() {
     const statusOrder = useStatusOrder();
@@ -29,7 +29,7 @@ export function MainPage() {
                 <div className="row">
                     <div className="col">
                         <div className="banner">
-                            <img src={'./banner.jpg'} className="img-fluid" alt="К весне готовы!"/>
+                            <img src={'/banner.jpg'} className="img-fluid" alt="К весне готовы!"/>
                             <h2 className="banner-header">К весне готовы!</h2>
                         </div>
                         <TopSales />

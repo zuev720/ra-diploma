@@ -39,7 +39,7 @@ section {
   height: 32px;
   width: 32px;
   margin: 0 10px;
-  background-image: url(Components/img/header-controls-sprite.png);
+  background-image: url(components/img/header-controls-sprite.png);
   background-repeat: no-repeat;
   cursor: pointer;
 }

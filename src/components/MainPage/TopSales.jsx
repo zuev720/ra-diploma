@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchTopSales} from "../../store/Slices/topSalesFetchSlice";
+import {fetchTopSales} from "../../store/slices/topSalesFetchSlice";
 import {Preloader} from "../Preloader/Preloader";
 import {ProductItem} from "../ProductItem/ProductItem";
 

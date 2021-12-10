@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
-import {fetchProduct} from "../../store/Slices/productFetchSlice";
+import {fetchProduct} from "../../store/slices/productFetchSlice";
 import {Preloader} from "../Preloader/Preloader";
 import {SizeItem} from "./SizeItem";
 import {QuantityBlock} from "./QuantityBlock";
-import {wrightOrderToLocalStorage} from "../../Functions/wrightOrderToLocalStorage";
-import {setOrders} from "../../store/Slices/getOrdersSlice";
+import {wrightOrderToLocalStorage} from "../../functions/wrightOrderToLocalStorage";
+import {Image} from "../Image/Image";
 
 export function ProductPage() {
     const {id} = useParams();
@@ -14,8 +14,9 @@ export function ProductPage() {
     const dispatch = useDispatch();
     const item = useSelector((state) => state.productFetch);
     useEffect(() => {
+        history.push({pathname: `/catalog/${id}`})
         dispatch(fetchProduct({dispatch, id}));
-    }, [dispatch, id]);
+    }, [dispatch, history, id]);
 
     const Product = () => {
         const [activeSize, setActiveSize] = useState(null);
@@ -33,7 +34,6 @@ export function ProductPage() {
                 quantity,
             }
             wrightOrderToLocalStorage(obj);
-            dispatch(setOrders(JSON.parse(localStorage.getItem('orders'))));
             history.push('/cart');
         }
 
@@ -57,7 +57,7 @@ export function ProductPage() {
                 <h2 className="text-center">{item.item.title}</h2>
                 <div className="row align-items-center">
                     <div className="col-5">
-                        <img src={item.item.images[0]} className="img-fluid" alt={item.item.title}/>
+                        <Image images={item.item.images} className={'img-fluid'} alt={item.item.title}/>
                     </div>
                     <div className="col-7">
                         <table className="table table-bordered">
