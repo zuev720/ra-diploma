@@ -1,10 +1,11 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import qs from "qs";
 
 export const fetchProducts = createAsyncThunk(
     'fetch/productsFetch',
     async (props) => {
         const url = props.url;
-        const offset = props.offset || null;
+        const {offset} = qs.parse(url, { delimiter: /[?&]/ });
         const dispatch = props.dispatch;
         (offset) ? dispatch(fetchComplementaryProductsRequest()) : dispatch(fetchProductsRequest());
         try {

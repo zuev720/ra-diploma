@@ -19,7 +19,7 @@ function App() {
     return (
         <Provider store={store}>
             <div className={'App'}>
-                <Router basename={'ra-diploma'}>
+                <Router>
                     <Header/>
                     <Switch>
                         <Route path="/cart">
@@ -37,7 +37,7 @@ function App() {
                         <Route path="/catalog">
                             <CatalogPage/>
                         </Route>
-                        <Route exact={true} path="/">
+                        <Route>
                             <MainPage/>
                         </Route>
                     </Switch>

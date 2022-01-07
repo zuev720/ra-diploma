@@ -4,7 +4,6 @@ import productsFetchReducer from "./slices/productsFetchSlice";
 import productFetchReducer from "./slices/productFetchSlice";
 import categoriesFetchReducer from "./slices/categoriesFetchSlice";
 import valueSearchFormReducer from "./slices/valueSearchFormSlice";
-import valueCatalogSearchFormReducer from "./slices/valueCatalogSearchFormSlice";
 import requestOrdersReducer from "./slices/orderRequestSlice";
 import cartReducer from "./slices/cartSlice";
 
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
     productFetch: productFetchReducer,
     categoriesFetch: categoriesFetchReducer,
     valueSearchForm: valueSearchFormReducer,
-    valueCatalogSearchForm: valueCatalogSearchFormReducer,
     requestOrders: requestOrdersReducer,
     getOrders: cartReducer,
 });

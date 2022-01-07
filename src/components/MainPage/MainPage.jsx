@@ -29,7 +29,7 @@ export function MainPage() {
                 <div className="row">
                     <div className="col">
                         <div className="banner">
-                            <img src={'./banner.jpg'} className="img-fluid" alt="К весне готовы!"/>
+                            <img src={'../banner.jpg'} className="img-fluid" alt="К весне готовы!"/>
                             <h2 className="banner-header">К весне готовы!</h2>
                         </div>
                         <TopSales />
