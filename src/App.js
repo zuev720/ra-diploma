@@ -38,7 +38,7 @@ function App() {
                             <CatalogPage/>
                         </Route>
                         <Route>
-                            <MainPage/>
+                            <MainPage path={'/'}/>
                         </Route>
                     </Switch>
                     <Footer/>
