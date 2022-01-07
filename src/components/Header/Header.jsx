@@ -13,7 +13,7 @@ export function Header() {
                 <div className="col">
                     <nav className="navbar navbar-expand-sm navbar-light bg-light">
                         <Link className="navbar-brand" to={'/'}>
-                            <img src={'/header-logo.png'} alt="Bosa Noga" />
+                            <img src={'./header-logo.png'} alt="Bosa Noga" />
                         </Link>
 
                         <div className="collapase navbar-collapse justify-content-between" id="navbarMain">
