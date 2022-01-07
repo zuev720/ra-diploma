@@ -62,6 +62,7 @@ export function Catalog() {
         }
         if (items.items.length === 0 && offset) return;
         dispatch(fetchProducts({url, dispatch}));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryId, dispatch, location.search, q]);
 
     const handleAddProductsButton = () => {
