@@ -19,7 +19,7 @@ function App() {
     return (
         <Provider store={store}>
             <div className={'App'}>
-                <Router>
+                <Router basename={'ra-diploma'}>
                     <Header/>
                     <Switch>
                         <Route path="/cart">
