@@ -5,8 +5,8 @@ import {fetchProduct} from "../../store/slices/productFetchSlice";
 import {Preloader} from "../Preloader/Preloader";
 import {SizeItem} from "./SizeItem";
 import {QuantityBlock} from "./QuantityBlock";
-import {wrightOrderToLocalStorage} from "../../functions/wrightOrderToLocalStorage";
 import {Image} from "../Image/Image";
+import {changeCart} from "../../store/slices/cartSlice";
 
 export function ProductPage() {
     const {id} = useParams();
@@ -32,14 +32,23 @@ export function ProductPage() {
                 totalPrice,
                 price: product.price,
                 quantity,
+            };
+            const orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : [];
+            const matchOrder = orders.findIndex((elem) => elem.id === obj.id && elem.size === obj.size);
+            if (matchOrder !== -1) {
+                orders[matchOrder].quantity += obj.quantity;
+                orders[matchOrder].totalPrice += obj.totalPrice;
+            } else {
+                orders.push(obj);
             }
-            wrightOrderToLocalStorage(obj);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            dispatch(changeCart());
             history.push('/cart');
         }
 
         const ProductSizes = () => {
             const avalibleSizes = item.item.sizes.filter((item) => item.avalible);
-            return(
+            return (
                 <p className={'mt-4'}>Размеры в наличии: {
                     avalibleSizes.map((size, index) =>
                         <SizeItem
@@ -92,7 +101,9 @@ export function ProductPage() {
                             <ProductSizes/>
                             {activeSize && <QuantityBlock quantity={quantity} setQuantity={setQuantity}/>}
                         </div>
-                        {activeSize && <button className="btn btn-danger btn-block btn-lg w-100 mt-2" onClick={onOrderClick}>В корзину</button>}
+                        {<button className="btn btn-danger btn-block btn-lg w-100 mt-2"
+                                 onClick={onOrderClick}
+                                 disabled={!activeSize}>В корзину</button>}
                     </div>
                 </div>
             </section>

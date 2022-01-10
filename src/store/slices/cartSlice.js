@@ -1,17 +1,19 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createAction, createSlice} from '@reduxjs/toolkit';
 
+
+export const changeCart = createAction('changeCart');
 const initialState = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : [];
 
 export const cartReducer = createSlice({
     name: 'cart',
     initialState,
-    reducers: {
-        updateCart() {
-            return JSON.parse(localStorage.getItem('orders'));
-        },
-    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(changeCart, () => {
+                return JSON.parse(localStorage.getItem('orders'));
+            })
+    }
 });
-
-export const {updateCart} = cartReducer.actions;
 
 export default cartReducer.reducer;

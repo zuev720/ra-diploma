@@ -43,12 +43,9 @@ export const requestOrdersReducer = createSlice({
             state.success = true;
             state.loading = false;
         },
-        setInitialOrder() {
-            return initialState;
-        }
     },
 });
 
-export const {request, requestFailure, requestSuccess, setInitialOrder} = requestOrdersReducer.actions;
+const {request, requestFailure, requestSuccess} = requestOrdersReducer.actions;
 
 export default requestOrdersReducer.reducer;

@@ -1,17 +1,17 @@
-import './App.css';
-import {MainPage} from "./components/MainPage/MainPage";
-import {Footer} from "./components/Footer/Footer";
-import {Header} from "./components/Header/Header";
+import {Provider} from "react-redux";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
+import {store} from "./store";
+import './App.css';
+import {MainPage} from "./components/MainPage/MainPage";
+import {Footer} from "./components/Footer/Footer";
+import {Header} from "./components/Header/Header";
 import {CatalogPage} from "./components/CatalogPage/CatalogPage";
 import {AboutPage} from "./components/AboutPage/AboutPage";
 import {ContactsPage} from "./components/ContactsPage/ContactsPage";
-import {store} from "./store";
-import {Provider} from "react-redux";
 import {CartPage} from "./components/CartPage/CartPage";
 import {ProductPage} from "./components/ProductPage/ProductPage";
 

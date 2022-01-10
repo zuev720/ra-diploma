@@ -3,7 +3,7 @@ import qs from "qs";
 
 export const fetchProducts = createAsyncThunk(
     'fetch/productsFetch',
-    async (props) => {
+    async (props, thunkAPI) => {
         const url = props.url;
         const {offset} = qs.parse(url, { delimiter: /[?&]/ });
         const dispatch = props.dispatch;
@@ -55,6 +55,6 @@ export const productsFetchReducer = createSlice({
     },
 });
 
-export const {fetchProductsRequest, fetchComplementaryProductsRequest, fetchProductsFailure, fetchProductsSuccess, fetchComplementaryProductsSuccess} = productsFetchReducer.actions;
+const {fetchProductsRequest, fetchComplementaryProductsRequest, fetchProductsFailure, fetchProductsSuccess, fetchComplementaryProductsSuccess} = productsFetchReducer.actions;
 
 export default productsFetchReducer.reducer;

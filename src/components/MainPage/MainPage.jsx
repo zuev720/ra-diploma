@@ -1,18 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {TopSales} from "./TopSales";
 import {Catalog} from "./Catalog";
-import {useDispatch} from "react-redux";
-import {setInitialOrder} from "../../store/slices/orderRequestSlice";
-import {useStatusOrder} from "../../hooks/useStatusOrder";
+import {useLocation} from "react-router-dom";
 
 export function MainPage() {
-    const statusOrder = useStatusOrder();
-    const dispatch = useDispatch();
+    const [statusOrder, setStatusOrder] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
-        if (statusOrder)
-            dispatch(setInitialOrder());
-    }, [dispatch, statusOrder]);
+        if (location.state === 'orderSuccess') setStatusOrder(true);
+    }, [location.state]);
+
+    useEffect(() => {
+        if (statusOrder) setTimeout(() => setStatusOrder(false), 10000);
+    });
 
     const OrderSuccess = () => {
         return(

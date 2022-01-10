@@ -1,22 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import {Order} from "./Order";
-import {useDispatch} from "react-redux";
-import {updateCart} from "../../store/slices/cartSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {changeCart} from "../../store/slices/cartSlice";
 
 export function CartPage() {
     const dispatch = useDispatch();
-    const [orders, setOrders] = useState(localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []);
+    const orders = useSelector((state) => state.getOrders);
     const totalPrice = orders.reduce((acc, elem) => acc + elem.totalPrice, 0);
-
-    useEffect(() => {
-        dispatch(updateCart());
-    }, [dispatch]);
 
     const onDeleteOrderClick = (id) => {
         localStorage.setItem('orders', JSON.stringify(orders.filter((elem) => elem.id !== id)));
-        setOrders(JSON.parse(localStorage.getItem('orders')));
-        dispatch(updateCart());
+        dispatch(changeCart());
     };
 
     return (<>
